@@ -1,4 +1,4 @@
-# Architecture & Design Memo: Glean Agent
+# Architecture & Design Memo: Sift Agent
 
 ## 1. System Architecture
 The application coordinates seven purpose-built components in a unidirectional pipeline designed to strictly eliminate cross-question state leakage and enforce a hard resource ceiling:

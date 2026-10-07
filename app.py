@@ -1,4 +1,4 @@
-"""Streamlit Chat Interface for Glean Agent.
+"""Streamlit Chat Interface for Sift Agent.
 
 Port: 8502 (Antigravity)
 Features:
@@ -32,7 +32,7 @@ from src.agent import answer_question
 
 # Page Configuration
 st.set_page_config(
-    page_title="Glean Agent",
+    page_title="Sift Agent",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -104,7 +104,7 @@ if "doc_id" not in st.session_state:
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.title("Glean Agent")
+    st.title("Sift Agent")
     st.caption("Budgeted Tool Calling · Hard 6-Call Limit · Zero-RAG")
     st.divider()
 
@@ -188,7 +188,7 @@ with st.sidebar:
 
 
 # --- MAIN AREA ---
-st.title("Glean Agent")
+st.title("Sift Agent")
 st.write("Answers questions using a handwritten agent loop with native tool calling within a hard 6-call budget.")
 
 # Display Chat Messages

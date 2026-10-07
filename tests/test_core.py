@@ -1,4 +1,4 @@
-"""Unit tests for the Glean Agent core components.
+"""Unit tests for the Sift Agent core components.
 
 Tests cover:
 1. 7th tool call is refused and not executed

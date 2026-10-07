@@ -1,4 +1,4 @@
-# Glean Agent
+# Sift Agent
 
 A precise, zero-RAG, agentic PDF question-answering system that operates under a **strict execution budget of 6 tool calls** per query. Designed without heavy external agent frameworks, this system focuses on granular document retrieval, post-generation grounding validation, and robust untrusted-data injection defenses.
 

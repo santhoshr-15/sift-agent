@@ -1,4 +1,4 @@
-"""Evaluation script for Glean Agent.
+"""Evaluation script for Sift Agent.
 
 Usage:
     python eval.py samples/trap_test.pdf samples/trap_questions.json

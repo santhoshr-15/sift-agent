@@ -1,4 +1,4 @@
-"""Command-line interface for Glean Agent.
+"""Command-line interface for Sift Agent.
 
 Usage:
     python cli.py path/to.pdf "your question here"
