@@ -86,16 +86,9 @@ Under the hood, Sift Agent's `DocumentStore` doesn't just pull raw text. It pars
 
 ---
 
-## 🧪 Testing & Evaluation Outputs
+## 🧪 Agent Testing Result
 
-Sift Agent ships with an aggressive, adversarial test suite using `pytest`. The system is repeatedly tested against "Trap PDFs" containing split facts, superseded values, and embedded prompt injections.
-
-### 100% Passing Automated Test Suite
-
-**What our tests validate:**
-- **`test_fresh_state_per_question`**: Proves that reading Page 5 in Question 1 does not leak into Question 2's memory.
-- **`test_prompt_injection_warning`**: Proves that embedded adversarial text triggers the internal `[SECURITY ALERT]` system instead of hijacking the agent.
-- **`test_enforce_budget_limit`**: Proves the 7th tool call is mathematically blocked.
+![Sift Agent resolving a complex tabular question](docs/agent_test_result.png)
 
 ---
 
