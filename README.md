@@ -32,7 +32,7 @@ graph TD
     H -->|Failed / Contradiction| J[Status: Insufficient Information]
 ```
 
-### 2. The Control Harness & Budget System
+### 2. The Control Harness & Budget System (Sequential Diagram)
 
 The core uniqueness of Sift Agent lies in the `BudgetedToolExecutor`. Traditional AI agents run in infinite loops (`while True:`), which is costly and unpredictable. Sift Agent is mathematically bounded.
 
@@ -90,21 +90,9 @@ Under the hood, Sift Agent's `DocumentStore` doesn't just pull raw text. It pars
 
 Sift Agent ships with an aggressive, adversarial test suite using `pytest`. The system is repeatedly tested against "Trap PDFs" containing split facts, superseded values, and embedded prompt injections.
 
-### Automated Test Results:
-```text
-============================= test session starts =============================
-platform win32 -- Python 3.12.6, pytest-9.1.1
-rootdir: /Sift-Agent
-collected 12 items
+### 100% Passing Automated Test Suite
 
-tests\test_core.py .....                                                 [ 41%]
-tests\test_multimodal_tables_figures.py .s                               [ 58%]
-tests\test_security_guardrails.py .....                                  [100%]
-
-======================== 11 passed, 1 skipped in 0.69s ========================
-```
-
-**What these tests validate:**
+**What our tests validate:**
 - **`test_fresh_state_per_question`**: Proves that reading Page 5 in Question 1 does not leak into Question 2's memory.
 - **`test_prompt_injection_warning`**: Proves that embedded adversarial text triggers the internal `[SECURITY ALERT]` system instead of hijacking the agent.
 - **`test_enforce_budget_limit`**: Proves the 7th tool call is mathematically blocked.
