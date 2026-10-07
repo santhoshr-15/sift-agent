@@ -77,6 +77,13 @@ Sift Agent wraps all tool returns in strict untrusted XML tags (`<untrusted_docu
 ### 4. Post-Generation Grounding Check
 The AI must supply verbatim `evidence_quotes` alongside its `cited_pages`. Before showing you the answer, a secondary logic pass verifies that the `evidence_quotes` literally exist within the `cited_pages`. If they don't, the response is blocked.
 
+### 5. Advanced Multimodal Extraction Pipeline
+Under the hood, Sift Agent's `DocumentStore` doesn't just pull raw text. It parses PDFs using a highly advanced multimodal strategy:
+- **Normal Text:** Extracts standard text blocks cleanly.
+- **Bordered Tables:** Automatically detects graphical tables and converts them directly into Markdown tables for the LLM to easily reason over columns and rows.
+- **Borderless Tabular Data:** Uses a custom 2D geometric plane algorithm (tracking X and Y word coordinates) to reconstruct invisible matrices, conditional probability tables, and aligned data without gridlines.
+- **Pictorial Images & Graphs:** Detects the presence of vectors, charts, or images on a page, captures a snapshot, and automatically streams it through the **Gemini Vision Model** to translate the visual trends and axes into factual text before handing the page to the agent.
+
 ---
 
 ## 🧪 Testing & Evaluation Outputs
