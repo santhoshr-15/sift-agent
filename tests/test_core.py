@@ -1,4 +1,4 @@
-"""Unit tests for the Budgeted Document-Answering Agent core components.
+"""Unit tests for the Glean Agent core components.
 
 Tests cover:
 1. 7th tool call is refused and not executed
@@ -10,10 +10,10 @@ Tests cover:
 
 import os
 import pytest
-from document_store import DocumentStore
-from budget import BudgetedToolExecutor
-import tools
-from agent import perform_grounding_check
+from src.document_store import DocumentStore
+from src.budget import BudgetedToolExecutor
+from src import tools
+from src.agent import perform_grounding_check
 
 
 @pytest.fixture(scope="module")

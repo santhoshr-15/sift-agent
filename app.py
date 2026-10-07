@@ -1,4 +1,4 @@
-"""Streamlit Chat Interface for Budgeted Document-Answering Agent.
+"""Streamlit Chat Interface for Glean Agent.
 
 Port: 8502 (Antigravity)
 Features:
@@ -27,19 +27,19 @@ try:
 except Exception:
     pass
 
-from document_store import DocumentStore
-from agent import answer_question
+from src.document_store import DocumentStore
+from src.agent import answer_question
 
 # Page Configuration
 st.set_page_config(
-    page_title="Budgeted Document-Answering Agent",
-    page_icon="⚖️",
+    page_title="Glean Agent",
+    page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Custom CSS for rich aesthetics and badges
-st.html("""
+st.markdown("""
 <style>
     .badge-answered {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -87,7 +87,7 @@ st.html("""
         font-size: 0.85rem;
     }
 </style>
-""")
+""", unsafe_allow_html=True)
 
 # Initialize Session State
 if "messages" not in st.session_state:
@@ -104,13 +104,13 @@ if "doc_id" not in st.session_state:
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.title("⚖️ Document Agent")
-    st.caption("Budgeted Tool Calling • Hard 6-Call Limit • Zero-RAG")
+    st.title("Glean Agent")
+    st.caption("Budgeted Tool Calling · Hard 6-Call Limit · Zero-RAG")
     st.divider()
 
     # API Key Configuration Fallback
     if not os.environ.get("GEMINI_API_KEY"):
-        st.warning("⚠️ GEMINI_API_KEY is missing")
+        st.warning("⚠ GEMINI_API_KEY is missing")
         key_input = st.text_input(
             "Enter Gemini API Key",
             type="password",
@@ -164,7 +164,7 @@ with st.sidebar:
     if st.session_state.all_traces:
         trace_json = json.dumps(st.session_state.all_traces, indent=2, ensure_ascii=False)
         st.download_button(
-            label="📥 Download Trace (JSON)",
+            label="Download Trace (JSON)",
             data=trace_json,
             file_name="session_trace.json",
             mime="application/json",
@@ -172,7 +172,7 @@ with st.sidebar:
         )
 
     # Clear Chat Button
-    if st.button("🗑️ Clear Chat", use_container_width=True):
+    if st.button("Clear Chat", use_container_width=True):
         st.session_state.messages = []
         st.session_state.all_traces = []
         st.rerun()
@@ -180,15 +180,15 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("""
     **Hard Rules Enforced:**
-    - 🔒 Max 6 tool calls per question
-    - 🔍 Keyword search only (No RAG / vectors)
-    - 🛡️ Untrusted data tags & prompt injection warnings
-    - 🔬 Post-generation grounding validation
+    - Max 6 tool calls per question
+    - Keyword search only (No RAG / vectors)
+    - Untrusted data tags & prompt injection warnings
+    - Post-generation grounding validation
     """)
 
 
 # --- MAIN AREA ---
-st.title("Budgeted Document-Answering Agent")
+st.title("Glean Agent")
 st.write("Answers questions using a handwritten agent loop with native tool calling within a hard 6-call budget.")
 
 # Display Chat Messages

@@ -147,7 +147,7 @@ def create_trap_questions(json_path: str) -> None:
 
 
 if __name__ == "__main__":
-    samples_dir = os.path.join(os.path.dirname(__file__), "samples")
+    samples_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "samples")
     pdf_out = os.path.join(samples_dir, "trap_test.pdf")
     json_out = os.path.join(samples_dir, "trap_questions.json")
     create_trap_test_pdf(pdf_out)

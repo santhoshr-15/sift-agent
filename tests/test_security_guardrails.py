@@ -10,10 +10,10 @@ Verifies:
 
 import os
 import pytest
-from document_store import DocumentStore
-from budget import BudgetedToolExecutor
-import tools
-from logger import redact_sensitive_data
+from src.document_store import DocumentStore
+from src.budget import BudgetedToolExecutor
+from src import tools
+from src.logger import redact_sensitive_data
 
 
 def test_pdf_magic_bytes_validation():
@@ -39,7 +39,7 @@ def test_doc_id_sanitization_against_directory_traversal():
 
 def test_keyword_sanitization_null_bytes_and_length():
     """Verify keyword sanitization strips null bytes and caps max length."""
-    from tools import _sanitize_keyword
+    from src.tools import _sanitize_keyword
     dirty_keyword = "confidential\x00\x01\x08secret" + ("A" * 300)
     clean_keyword = _sanitize_keyword(dirty_keyword)
     assert "\x00" not in clean_keyword

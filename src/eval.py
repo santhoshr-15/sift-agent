@@ -1,4 +1,4 @@
-"""Evaluation script for the budgeted document-answering agent.
+"""Evaluation script for Glean Agent.
 
 Usage:
     python eval.py samples/trap_test.pdf samples/trap_questions.json
@@ -13,8 +13,8 @@ import os
 import sys
 import re
 from typing import Any, Dict, List
-from document_store import DocumentStore
-from agent import answer_question
+from src.document_store import DocumentStore
+from src.agent import answer_question
 
 
 def normalize(s: str) -> str:
@@ -59,7 +59,7 @@ def evaluate(pdf_path: str, questions_json_path: str) -> bool:
         got_status = res["status"]
         got_answer = res["answer"]
 
-        # WHY: Hard budget rule check: breaking this is disqualification in competition.
+        # WHY: Hard budget rule check: breaking this exceeds the allowed resource constraints.
         assert calls <= 6, f"DISQUALIFIED: Question '{q_text}' used {calls} calls, exceeding max 6 budget!"
 
         # Determine pass/fail

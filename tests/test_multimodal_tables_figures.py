@@ -2,8 +2,8 @@
 
 import os
 import pytest
-from document_store import DocumentStore
-import tools
+from src.document_store import DocumentStore
+from src import tools
 
 
 def test_table_and_figure_structure_extraction():
@@ -27,7 +27,7 @@ def test_table_and_figure_structure_extraction():
 
 def test_real_lecture_pdf_table_extraction_if_available():
     """If CSCI415009_V2.pdf is available, verify page 171 extracts tabular data."""
-    pdf_path = r"C:\Aadithya projects\Budgeted Document-Answering Agent\CSCI415009_V2.pdf"
+    pdf_path = r"C:\Santhosh Kumar R projects\Glean Agent\CSCI415009_V2.pdf"
     if not os.path.exists(pdf_path):
         pytest.skip("Lecture PDF not present in environment")
 

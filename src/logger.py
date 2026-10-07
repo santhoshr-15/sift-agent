@@ -61,6 +61,6 @@ def log_tool_call(
         "timestamp": timestamp,
     }
 
-    # WHY: Append with flush=True so logs are immediately committed to disk during judge evaluation.
+    # WHY: Append with flush=True so logs are immediately committed to disk for reliable audit trailing.
     with open(log_file, "a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")

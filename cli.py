@@ -1,4 +1,4 @@
-"""Command-line interface for the budgeted document-answering agent.
+"""Command-line interface for Glean Agent.
 
 Usage:
     python cli.py path/to.pdf "your question here"
@@ -7,8 +7,8 @@ Usage:
 from __future__ import annotations
 import os
 import sys
-from document_store import DocumentStore
-from agent import answer_question
+from src.document_store import DocumentStore
+from src.agent import answer_question
 
 
 def main() -> None:

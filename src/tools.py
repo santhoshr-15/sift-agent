@@ -17,7 +17,7 @@ from __future__ import annotations
 import re
 import unicodedata
 from typing import Any, Dict, List, Optional
-from document_store import DocumentStore
+from src.document_store import DocumentStore
 
 # Global active document store instance for convenience when tools are invoked directly
 _GLOBAL_STORE: Optional[DocumentStore] = None
